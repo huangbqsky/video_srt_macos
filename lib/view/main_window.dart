@@ -37,6 +37,63 @@ class _MainViewState extends State<MainView> {
     return;
   }
 
+  Widget buildMacosWindow(){
+    return MacosWindow(
+      sidebar: Sidebar(
+        minWidth: 200,
+        builder: (context, scrollController) => SidebarItems(
+          currentIndex: _pageIndex,
+          onChanged: (index) {
+            setState(() => _pageIndex = index);
+          },
+          items: const [
+            SidebarItem(
+              leading: MacosIcon(CupertinoIcons.home),
+              label: Text('首页'),
+            ),
+            SidebarItem(
+              leading: MacosIcon(CupertinoIcons.settings),
+              label: Text('配置'),
+            ),
+            SidebarItem(
+              leading: MacosIcon(CupertinoIcons.helm),
+              label: Text('帮助'),
+            ),
+            SidebarItem(
+              leading: MacosIcon(CupertinoIcons.info),
+              label: Text('关于'),
+            ),
+          ],
+        ),
+      ),
+      child: IndexedStack(
+        index: _pageIndex,
+        children: const [
+          HomePage(),
+          ConfigView(),
+          HelpView(),
+          AboutView()
+        ],
+      ),
+    );
+  }
+
+
+  Widget buildLoadingWidget(){
+    return Container(
+      color: Colors.grey[100],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ProgressCircle(
+            value: null,
+          ),
+          Text("正在初始化，第一次初始化会比较慢，请稍后 ..."),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return PlatformMenuBar(
@@ -68,55 +125,7 @@ class _MainViewState extends State<MainView> {
           ],
         ),
       ],
-      child: inited ? MacosWindow(
-        sidebar: Sidebar(
-          minWidth: 200,
-          builder: (context, scrollController) => SidebarItems(
-            currentIndex: _pageIndex,
-            onChanged: (index) {
-              setState(() => _pageIndex = index);
-            },
-            items: const [
-              SidebarItem(
-                leading: MacosIcon(CupertinoIcons.home),
-                label: Text('首页'),
-              ),
-              SidebarItem(
-                leading: MacosIcon(CupertinoIcons.settings),
-                label: Text('配置'),
-              ),
-              SidebarItem(
-                leading: MacosIcon(CupertinoIcons.helm),
-                label: Text('帮助'),
-              ),
-              SidebarItem(
-                leading: MacosIcon(CupertinoIcons.info),
-                label: Text('关于'),
-              ),
-            ],
-          ),
-        ),
-        child: IndexedStack(
-          index: _pageIndex,
-          children: const [
-            HomePage(),
-            ConfigView(),
-            HelpView(),
-            AboutView()
-          ],
-        ),
-      ) : Container(
-        color: Colors.grey[100],
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ProgressCircle(
-              value: null,
-            ),
-            Text("正在初始化，第一次初始化会比较慢，请稍后 ..."),
-          ],
-        ),
-      ),
+      child: inited ? buildMacosWindow() : buildLoadingWidget(),
     );
   }
 }
