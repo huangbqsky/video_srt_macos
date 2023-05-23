@@ -29,7 +29,8 @@ class _MainViewState extends State<MainView> {
   }
 
   Future<void> init() async{
-    await ZipRepository.unzipVideoSrt();
+    // TODO: unzipVideoSrt 会报错？？
+    // await ZipRepository.unzipVideoSrt();
     setState(() {
       inited = true;
     });
