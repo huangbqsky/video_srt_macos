@@ -8,6 +8,7 @@ import 'package:video_srt_macos/view/help_view.dart';
 
 import 'about_view.dart';
 import 'home_view.dart';
+import 'video_srt.dart';
 
 
 class MainView extends StatefulWidget {
@@ -52,6 +53,10 @@ class _MainViewState extends State<MainView> {
               label: Text('首页'),
             ),
             SidebarItem(
+              leading: MacosIcon(CupertinoIcons.videocam_circle_fill),
+              label: Text('字幕'),
+            ),
+            SidebarItem(
               leading: MacosIcon(CupertinoIcons.settings),
               label: Text('配置'),
             ),
@@ -69,7 +74,8 @@ class _MainViewState extends State<MainView> {
       child: IndexedStack(
         index: _pageIndex,
         children: const [
-          HomePage(),
+          HomePage(), // 主页：提取视频中字幕
+          VideoSrtPage(), // 字幕：给视频添加字幕
           ConfigView(),
           HelpView(),
           AboutView()
