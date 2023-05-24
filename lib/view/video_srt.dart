@@ -180,16 +180,24 @@ class _VideoSrtPageState extends State<VideoSrtPage> {
       buttonSize: ButtonSize.large,
       padding: EdgeInsets.symmetric(horizontal: running ? 10 : 25, vertical: 5),
       onPressed: running ? null :() async{
+
         var path = selectedFilePath;
         if(path == null){
           showSelectFileHintDialog();
           return;
         }
+
+        var srtPath = selectedSrtFilePath;
+        if(srtPath == null){
+          showSelectFileHintDialog();
+          return;
+        }
+
         setState(() {
           running = true;
-          cmdRecord = "开始合成，请稍后。。。\n";
+          cmdRecord = "开始添加字幕，请稍后。。。\n";
         });
-        await ShellRepository.runVideoSrt(path, (event) {
+        await ShellRepository.runAddSrtForVideo(path, srtPath, (event) {
           setState(() {
             cmdRecord += "$event\n";
           });
@@ -207,11 +215,12 @@ class _VideoSrtPageState extends State<VideoSrtPage> {
           children: [
             Transform.scale(scale: 0.8, child: ProgressCircle()),
             SizedBox(width: 5,),
-            const Text("提取中...")
+            const Text("字幕添加中...")
           ],),
-      ) : const Text("提取"),
+      ) : const Text("添加字幕"),
     );
   }
+
 
   Widget buildCmdRecord(){
     return Container(
