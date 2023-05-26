@@ -1,15 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:process_run/shell.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:video_srt_macos/repository/shell_repository.dart';
-import 'package:video_srt_macos/utils/path_utils.dart';
-
-import 'custom_dialog_view.dart';
+import 'package:video_srt_macos/constanst.dart';
 
 class AboutView extends StatefulWidget {
   const AboutView({super.key});
@@ -19,7 +13,6 @@ class AboutView extends StatefulWidget {
 }
 
 class _AboutViewState extends State<AboutView> {
-  final githubUrl = "https://github.com/loongwind/video-srt-mac";
   String appName = "";
   String version = "";
 
@@ -30,7 +23,7 @@ class _AboutViewState extends State<AboutView> {
     initData();
   }
 
-  void initData() async{
+  void initData() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     setState(() {
       appName = packageInfo.appName;
@@ -63,26 +56,46 @@ class _AboutViewState extends State<AboutView> {
                 return Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:[
-                        DefaultTextStyle(style: MacosTheme.of(context).typography.title1, child: Text(appName)),
-                        const SizedBox(height: 10,),
-                        DefaultTextStyle(style: MacosTheme.of(context).typography.title2, child: Text("版本：$version")),
-                        const SizedBox(height: 10,),
+                      children: [
+                        DefaultTextStyle(
+                            style: MacosTheme.of(context).typography.title1,
+                            child: Text(appName)),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        DefaultTextStyle(
+                            style: MacosTheme.of(context).typography.title2,
+                            child: Text("版本：$version")),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            DefaultTextStyle(style: MacosTheme.of(context).typography.body, child: const Text("@loongwind")),
-                            const SizedBox(width: 10,),
-                            GestureDetector(child: DefaultTextStyle(style: MacosTheme.of(context).typography.body.copyWith(color: Colors.blueAccent, decoration: TextDecoration.underline,), child: Text("Github")),
-                              onTap: (){
-                                Uri url = Uri.parse(githubUrl);
+                            DefaultTextStyle(
+                                style: MacosTheme.of(context).typography.body,
+                                child: const Text("@huangbqsky")),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            GestureDetector(
+                              child: DefaultTextStyle(
+                                  style: MacosTheme.of(context)
+                                      .typography
+                                      .body
+                                      .copyWith(
+                                        color: Colors.blueAccent,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                  child: Text("Github")),
+                              onTap: () {
+                                Uri url = Uri.parse(GITHUB);
                                 launchUrl(url);
-                              },),
+                              },
+                            ),
                           ],
                         )
-
-                      ]
-                  ),
+                      ]),
                 );
               },
             ),
@@ -91,5 +104,4 @@ class _AboutViewState extends State<AboutView> {
       },
     );
   }
-
 }

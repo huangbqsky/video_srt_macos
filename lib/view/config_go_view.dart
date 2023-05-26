@@ -1,10 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:video_srt_macos/view/InputLine.dart';
-
-import '../model/ini_model.dart';
 import '../repository/ini_repository.dart';
+import 'InputLine.dart';
 
 class ConfigGOView extends StatefulWidget {
   const ConfigGOView({super.key});
@@ -64,7 +61,4 @@ class _ConfigGOViewState extends State<ConfigGOView> {
       child: const Text("保存"),
     );
   }
-
-
-
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
+
 const _kDialogBorderRadius = BorderRadius.all(Radius.circular(12.0));
+
 class CustomMacosAlertDialog extends StatelessWidget {
   /// Builds a macOS-style Alert Dialog
   const CustomMacosAlertDialog({

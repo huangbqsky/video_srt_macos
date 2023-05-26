@@ -1,12 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:process_run/shell.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:video_srt_macos/repository/shell_repository.dart';
-import 'package:video_srt_macos/utils/path_utils.dart';
+
+import '../repository/shell_repository.dart';
+import '../utils/path_utils.dart';
 
 import 'custom_dialog_view.dart';
 

@@ -1,10 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:video_srt_macos/repository/ini_repository.dart';
-import 'package:video_srt_macos/view/InputLine.dart';
-
-import '../model/ini_model.dart';
+import '../repository/ini_repository.dart';
 
 class ConfigSrtView extends StatefulWidget {
   const ConfigSrtView({super.key});

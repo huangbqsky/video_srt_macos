@@ -1,14 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:process_run/shell.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:video_srt_macos/repository/shell_repository.dart';
-import 'package:video_srt_macos/utils/path_utils.dart';
-
-import 'custom_dialog_view.dart';
+import 'package:video_srt_macos/constanst.dart';
 
 class HelpView extends StatefulWidget {
   const HelpView({super.key});
@@ -18,7 +12,6 @@ class HelpView extends StatefulWidget {
 }
 
 class _HelpViewState extends State<HelpView> {
-  final githubUrl = "https://github.com/loongwind/video-srt-mac";
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +38,35 @@ class _HelpViewState extends State<HelpView> {
                 return Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:[
-                        DefaultTextStyle(style: MacosTheme.of(context).typography.title2, child: Text("点击以下链接")),
-                        SizedBox(height: 10,),
-                        GestureDetector(child: DefaultTextStyle(style: MacosTheme.of(context).typography.title2.copyWith(color: Colors.blueAccent, decoration: TextDecoration.underline,), child: Text(githubUrl)),
-                          onTap: (){
-                            Uri url = Uri.parse(githubUrl);
+                      children: [
+                        DefaultTextStyle(
+                            style: MacosTheme.of(context).typography.title2,
+                            child: const Text("点击以下链接")),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        GestureDetector(
+                          child: DefaultTextStyle(
+                              style: MacosTheme.of(context)
+                                  .typography
+                                  .title2
+                                  .copyWith(
+                                    color: Colors.blueAccent,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                              child: const Text(GITHUB)),
+                          onTap: () {
+                            Uri url = Uri.parse(GITHUB);
                             launchUrl(url);
-                          },),
-                        SizedBox(height: 10,),
-                        DefaultTextStyle(style: MacosTheme.of(context).typography.title2, child: Text("查看更多帮助"))
-                      ]
-                  ),
+                          },
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        DefaultTextStyle(
+                            style: MacosTheme.of(context).typography.title2,
+                            child: const Text("查看更多帮助"))
+                      ]),
                 );
               },
             ),
@@ -65,5 +75,4 @@ class _HelpViewState extends State<HelpView> {
       },
     );
   }
-
 }
