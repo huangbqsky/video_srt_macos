@@ -211,7 +211,7 @@ class _VideoSrtPageState extends State<VideoSrtPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Transform.scale(scale: 0.8, child: ProgressCircle()),
-            SizedBox(width: 5,),
+            const SizedBox(width: 5,),
             const Text("字幕添加中...")
           ],),
       ) : const Text("添加字幕"),
@@ -227,11 +227,11 @@ class _VideoSrtPageState extends State<VideoSrtPage> {
 
       ),
       width: 500,
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         minHeight: 200,
       ),
-      margin: EdgeInsets.only(top: 10),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Text(cmdRecord),
     );
   }
@@ -244,19 +244,19 @@ class _VideoSrtPageState extends State<VideoSrtPage> {
         child: CustomMacosAlertDialog(
           primaryButton:PushButton(
             buttonSize: ButtonSize.large,
-            child: Text('确定'),
+            child: const Text('确定'),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           child: Column(
             children: [
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               Text(
                 '提示',
                 style: MacosTheme.of(context).typography.title2,
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               Text(
                 '请先选择视频文件',
                 textAlign: TextAlign.center,
@@ -277,7 +277,7 @@ class _VideoSrtPageState extends State<VideoSrtPage> {
         child: CustomMacosAlertDialog(
           primaryButton:PushButton(
             buttonSize: ButtonSize.large,
-            child: Text('打开文件夹'),
+            child: const Text('打开文件夹'),
             onPressed: () async{
               var path = selectedFilePath;
               if(path != null){
@@ -289,19 +289,19 @@ class _VideoSrtPageState extends State<VideoSrtPage> {
           secondaryButton: PushButton(
             isSecondary: true,
             buttonSize: ButtonSize.large,
-            child: Text('取消'),
+            child: const Text('取消'),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           child: Column(
             children: [
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               Text(
                 '提示',
                 style: MacosTheme.of(context).typography.title2,
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               Text(
                 '恭喜你，提取完成',
                 textAlign: TextAlign.center,

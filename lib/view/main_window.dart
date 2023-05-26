@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
+import '../repository/zip_repository.dart';
+
 import 'config_view.dart';
 import 'help_view.dart';
 
 import 'about_view.dart';
 import 'home_view.dart';
 import 'video_srt.dart';
-
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -89,7 +90,7 @@ class _MainViewState extends State<MainView> {
       color: Colors.grey[100],
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: const [
           ProgressCircle(
             value: null,
           ),
