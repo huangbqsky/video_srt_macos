@@ -76,9 +76,9 @@ class _MainViewState extends State<MainView> {
         children: const [
           HomePage(), // 主页：提取视频中字幕
           VideoSrtPage(), // 字幕：给视频添加字幕
-          ConfigView(),
-          HelpView(),
-          AboutView()
+          ConfigView(), // 配置
+          HelpView(), // 帮助
+          AboutView() // 关于
         ],
       ),
     );

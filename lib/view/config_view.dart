@@ -50,6 +50,7 @@ class _ConfigViewState extends State<ConfigView> {
                 return Container(
                   padding: EdgeInsets.only(top: 10),
                   width: double.infinity,
+                  // color: Colors.red[100],
                   child: MacosTabView(
                       controller: controller,
                       tabs: tabs,
